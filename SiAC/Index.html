@@ -1,0 +1,99 @@
+<?php require_once('Connections/Local.php'); ?>
+<?php
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
+  $insertSQL = sprintf("INSERT INTO login (id, `user`, password) VALUES (%s, %s, %s)",
+                       GetSQLValueString($_POST['id'], "int"),
+                       GetSQLValueString($_POST['user'], "text"),
+                       GetSQLValueString($_POST['password'], "text"));
+
+  mysql_select_db($database_Local, $Local);
+  $Result1 = mysql_query($insertSQL, $Local) or die(mysql_error());
+
+  $insertGoTo = "menu.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
+    $insertGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $insertGoTo));
+}
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>SiAC - Sistema de Administraci&oacute;n y Control</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+}
+.Estilo1 {
+	font-size: 36px;
+	color: #FF0000;
+}
+.Estilo2 {font-size: 16px; color: #FF0000; }
+.Estilo3 {
+	font-family: "Courier New", Courier, monospace;
+	color: #FF0000;
+}
+-->
+</style></head>
+
+<body>
+<div align="left"></div>
+<div align="center"></div>
+<table width="935" height="253" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" class="Estilo1">
+  <!--DWLayoutDefaultTable-->
+  <tr>
+    <td width="212" height="26">&nbsp;</td>
+    <td width="723">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="56"><div align="center"><img src="Imagenes/Logo_1.png" alt="Logo_1" width="132" height="207" align="absmiddle" /></div></td>
+    <td align="center"><p align="center" class="Estilo1"><em>SiAC - Sistema de Administraci&oacute;n y Control</em></p>
+        <p align="center" class="Estilo2"><em>Escuela Dominical - Asambleas de Dios </em></p>
+      <p align="center" class="Estilo2"><em>Quilpu&eacute; Los Carrera </em></p></td>
+  </tr>
+</table>
+<p align="center" class="Estilo2">
+  <label></label>
+</p>
+<p align="center" class="Estilo2">&nbsp;</p>
+<p align="center" class="Estilo2">&nbsp;</p>
+<form method="get" action="login.php">
+<div align="center">
+  <input name="Enviar" type="submit" class="Estilo1" value="Ingresar"/>
+</div>
+<p align="center" class="Estilo2">&nbsp;</p>
+<p align="center" class="Estilo2">&nbsp;</p>
+</body>
+</html>
