@@ -1,3 +1,14 @@
+<?php
+ 		session_start();
+		include_once('Connections/Local.php'); 
+		
+		if($_SESSION['tipo_usu']=='a' or $_SESSION['tipo_usu']=='u'){
+		}else{
+			header('location:error.php');
+		}
+
+?>
+
 
 <!DOCTYPE HTML>
 <html>
@@ -5,9 +16,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SiAC - Sistema de Administración y Control</title>
 <script type="text/JavaScript">
-function llamarAlumno()
+function llamarAdministrador()
 {
-location.href='formulario_alumno.php';
+location.href='Administrador.php';
 }
 
 function llamarRegistrosemanal()
@@ -19,6 +30,8 @@ location.href='registro_semanal.php';
 <style type="text/css">
 body{
 	background-color: #FFFFFF;
+	background-color: #FFF;
+	background-image: url(img/fondoP.png);
 }
 nav{
 	/*Bordes redondeados*/
@@ -93,9 +106,9 @@ nav ul li a:hover {
         	<li><a title="Modulo Asistencia" target="_parent" onClick="llamarRegistrosemanal()">Modulo Asistencia</a></li>
         	<li><a title="Modulo Tesoreria" href="#">Modulo Tesorería</a></li>
         	<li><a title="Modulo Clases" href="#">Modulo Clases</a></li>
-			<li><a title="Modulo Alumnos" target="_parent" onClick="llamarAlumno()" >Modulo Alumnos</a></li>
+			<li><a title="Modulo Administración" target="_parent" onClick="llamarAdministrador()" >Modulo Administrador</a></li>
 			<li><a title="Modulo Maestros" href="#">Modulo Maestros</a></li>
-			<li><a title="Salir" href="#">Salir</a></li>
+			<li><a title="Salir" href="php_cerrar.php">Salir</a></li>
         </ul>
 	</nav>
 </div>

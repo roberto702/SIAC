@@ -11,9 +11,9 @@
 					$_SESSION['username']=$dato['usu'];
 					$_SESSION['tipo_usu']=$dato['tipo'];
 					
-					///////////////////////////////
+					///////////////aqui debo probar de poner principal.php o Administrador.php//////////////// 
 					if($_SESSION['tipo_usu']=='a' or $_SESSION['tipo_usu']=='u'){						
-						header('location:Administrador.php');
+						header('location:principal.php');
 					}
 				}
 			}

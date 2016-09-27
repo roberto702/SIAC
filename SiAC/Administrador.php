@@ -86,8 +86,8 @@ body {
               <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Registros <b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="alumnos.php" target="admin"><i class="icon-user"></i> Alumnos</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="salones.php" target="admin"><i class="icon-folder-open"></i> Salones</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="pagos.php" target="admin"><i class="icon-list"></i> Registrar Pagos</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="salones.php" target="admin"><i class="icon-folder-open"></i> Clases</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="pagos.php" target="admin"><i class="icon-list"></i> Registrar Asistencia</a></li>
                 <!--<li role="presentation" class="divider"></li>-->  
               </ul>
             </li>
@@ -115,9 +115,9 @@ body {
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="r_alumnos.php" target="admin"><i class="icon-th-list"></i> 
                 Listado de Alumnos</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="reporte_pagos.php" target="admin"><i class="icon-th-list"></i> 
-                Reportes de Pago - Alumnos</a></li>
+                Listado por Clases - Secretaria</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="reporte_pagos2.php" target="admin"><i class="icon-th-list"></i> 
-                Reportes de Pago - Conceptos</a></li>
+                Resumen Mensual - Tesoreria</a></li>
               </ul>
             </li>
           </ul>
@@ -129,7 +129,9 @@ body {
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="usuarios.php" target="admin"><i class="icon-user"></i> Crear Usuarios</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="cambiar_clave.php" target="admin"><i class="icon-refresh"></i> Cambiar Contraseña</a></li>
                 <li role="presentation" class="divider"></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="principal.php"><i class="icon-refresh"></i>Menú Principal</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="php_cerrar.php"><i class="icon-off"></i> Salir</a></li>
+				
               </ul>
             </li>
           </ul>

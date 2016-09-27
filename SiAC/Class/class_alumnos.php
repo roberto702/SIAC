@@ -1,4 +1,6 @@
 <?php
+include_once('Connections/Local.php');
+
 class Consultar_Salones{
 	private $consulta;
 	private $fetch;
@@ -52,13 +54,13 @@ class Proceso_Alumnos{
 	var $apellido;		var $director;		var $rut;			var $pension;
 	var $telefono;		var $barrio;		var $fechan;		var $sangre;		var $grado;
 		
-	function __construct($id,$nombre,$apellido,$nit,$telefono,$fechan,$folio,$curso,$director,$pension,$barrio,$sangre,$grado){
+	function __construct($id,$nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,$director,$pension,$barrio,$sangre,$grado){
 		$this->id=$id;						$this->folio=$folio;
 		$this->nombre=$nombre;				$this->curso=$curso;
-		$this->apellido=$apellido;			$this->director=$director;
+		$this->apellido=$apellido;			$this->maestro=$director;
 		$this->rut=$rut;					$this->pension=$pension;
-		$this->telefono=$telefono;			$this->barrio=$barrio;
-		$this->fechan=$fechan;				$this->sangre=$sangre;
+		$this->telefono=$telefono;			$this->domicilio=$barrio;
+		$this->fechan=$fechan;				$this->estado=$sangre;
 		$this->grado=$grado;	
 							
 	}
@@ -66,23 +68,23 @@ class Proceso_Alumnos{
 	function crear(){
 		$id=$this->id;						$folio=$this->folio;
 		$nombre=$this->nombre;				$curso=$this->curso;		
-		$apellido=$this->apellido;			$director=$this->director;
+		$apellido=$this->apellido;			$director=$this->maestro;
 		$rut=$this->rut;					$pension=$this->pension;
-		$telefono=$this->telefono;			$barrio=$this->barrio;
-		$fechan=$this->fechan;				$sangre=$this->sangre;
+		$telefono=$this->telefono;			$barrio=$this->domicilio;
+		$fechan=$this->fechan;				$sangre=$this->estado;
 		$grado=$this->grado;
 			
-		mysql_query("INSERT INTO alumnos (nombre, apellido, rut, telefono, fechan, folio, curso, estado, director, pension, barrio, sangre) 
+		mysql_query("INSERT INTO alumnos (nombre, apellido, rut, telefono, fechan, folio, curso, estado, maestro, pension, domicilio, estado) 
 				VALUES ('$nombre','$apellido','$rut','$telefono','$fechan','$folio','$curso','s','$director','$pension','$barrio','$sangre')");
 	}
 	
 	function actualizar(){
 		$id=$this->id;						$folio=$this->folio;
 		$nombre=$this->nombre;				$curso=$this->curso;		
-		$apellido=$this->apellido;			$director=$this->director;
+		$apellido=$this->apellido;			$director=$this->maestro;
 		$rut=$this->rut;					$pension=$this->pension;
-		$telefono=$this->telefono;			$barrio=$this->barrio;
-		$fechan=$this->fechan;				$sangre=$this->sangre;
+		$telefono=$this->telefono;			$barrio=$this->domicilio;
+		$fechan=$this->fechan;				$sangre=$this->estado;
 		$grado=$this->grado;
 		
 		mysql_query("Update alumnos Set	nombre='$nombre',
@@ -92,10 +94,10 @@ class Proceso_Alumnos{
 										fechan='$fechan',
 										folio='$folio',
 										curso='$curso',
-										director='$director',
+										maestro='$director',
 										pension='$pension',
-										barrio='$barrio',
-										sangre='$sangre',
+										domicilio='$barrio',
+										estado='$sangre',
 										grado='$grado'
 									Where id=$id");
 	}	

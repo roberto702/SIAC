@@ -16,12 +16,12 @@
 		
 		if(!empty($_GET['doc'])){
 			$doc=limpiar($_GET['doc']);
-			$sql=mysql_query("SELECT * FROM datos_alumnos WHERE rut='$doc'");
+			$sql=mysql_query("SELECT * FROM alumnos WHERE rut='$doc'");
 			if($row=mysql_fetch_array($sql)){
 				$id=$row['id'];						$existe=TRUE;
 				$nombre=$row['nombre'];				$apellido=$row['apellido'];			$rut=$row['rut'];					$telefono=$row['telefono'];
-				$fechan=$row['fechan'];				$folio=$row['folio'];				$curso=$row['curso'];				$sangre=$row['sangre'];
-				$director=$row['director'];			$pension=$row['pension'];			$grado=$row['grado'];				$barrio=$row['barrio'];
+				$fechan=$row['fechan'];				$folio=$row['folio'];				$curso=$row['curso'];				$sangre=$row['estado'];
+				$director=$row['maestro'];			$pension=$row['pension'];			$grado=$row['grado'];				$barrio=$row['domicilio'];
 				$titulo='Actualizar Alumno "'.$nombre.' '.$apellido.'"';
 				
 				if (file_exists("alumnos/".$rut.".jpg")){
@@ -92,9 +92,9 @@
                 $nombre=limpiar($_POST['nombre']);			$apellido=limpiar($_POST['apellido']);
                 $rut=limpiar($_POST['rut']);				$telefono=limpiar($_POST['telefono']);
                 $fechan=limpiar($_POST['fechan']);			$folio=limpiar($_POST['folio']);
-                $curso=limpiar($_POST['curso']);			$sangre=limpiar($_POST['sangre']);
-                $director=limpiar($_POST['director']);		$pension=limpiar($_POST['pension']);
-                $grado=limpiar($_POST['grado']);			$barrio=limpiar($_POST['barrio']);
+                $curso=limpiar($_POST['curso']);			$sangre=limpiar($_POST['estado']);
+                $director=limpiar($_POST['maestro']);		$pension=limpiar($_POST['pension']);
+                $grado=limpiar($_POST['grado']);			$barrio=limpiar($_POST['domicilio']);
                 
                 if($existe==FALSE){
                     $oProceso=new Proceso_Alumnos('',$nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,$director,$pension,$barrio,$sangre,$grado);						
@@ -154,11 +154,11 @@
                         <div class="span6">
                         	<strong>Nombre del Alumno</strong><br>
                             <input type="text" name="nombre" value="<?php echo $nombre; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>Codigo o Nit</strong><br>
+                            <strong>Rut Alumno</strong><br>
                             <input type="text" name="rut" value="<?php echo $rut; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Fecha de Nacimiento</strong><br>
                             <input type="date" name="fechan" value="<?php echo $fechan; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>Curso o Salon</strong><br>
+                            <strong>Nombre Clase</strong><br>
                             <select name="curso" class="input-xxlarge">
 								<?php
                                     $c=mysql_query("SELECT * FROM salones WHERE estado='s'");
@@ -172,9 +172,9 @@
                                 ?>
                             </select><br>
                             <strong>Pension</strong><br>
-                            <input type="number" name="pension" value="<?php echo $pension; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>Director de Grupo</strong><br>
-                            <input type="text" name="director" value="<?php echo $director; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <input type="text" name="pension" value="<?php echo $pension; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <strong>Nombre Maestro</strong><br>
+                            <input type="text" name="maestro" value="<?php echo $director; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Fotografia o Imagen</strong><br>
                             <input type="file" name="imagen"><br>
                         </div>
@@ -187,10 +187,10 @@
                             <input type="text" name="folio" value="<?php echo $folio; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Grado</strong><br>
                             <input type="text" name="grado" value="<?php echo $grado; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>Tipo de Sangre</strong><br>
-                            <input type="text" name="sangre" value="<?php echo $sangre; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>Barrio / Municipio</strong><br>
-                            <input type="text" name="barrio" value="<?php echo $barrio; ?>" required class="input-xxlarge" autocomplete="off"><br><br>
+                            <strong>Vive con</strong><br>
+                            <input type="text" name="estado" value="<?php echo $sangre; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <strong>Domicilio</strong><br>
+                            <input type="text" name="domicilio" value="<?php echo $barrio; ?>" required class="input-xxlarge" autocomplete="off"><br><br>
                             <button type="submit" class="btn btn-success"><strong>Registrar</strong></button>
                             <a href="crear_alumno.php" class="btn"><strong>Cancelar</strong></a>
                         </div>

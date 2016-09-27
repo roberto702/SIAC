@@ -8,7 +8,7 @@
 			header('location:error.php');
 		}
 		if(!empty($_GET['estado'])){
-			$nit=limpiar($_GET['estado']);
+			$rut=limpiar($_GET['estado']);
 			$cans=mysql_query("SELECT * FROM alumnos WHERE estado='s' and id='$rut'");
 			if($dat=mysql_fetch_array($cans)){
 				$xSQL="Update alumnos Set estado='n' Where id='$rut'";
@@ -245,7 +245,7 @@
                                 <div class="span6">
                                     <strong>Nombre del Alumno</strong><br>
                                     <input type="text" name="nombre" autocomplete="off" required value="<?php echo $dato['nombre']; ?>"><br>
-                                    <strong>Rut</strong><br>
+                                    <strong>Rut Alumno</strong><br>
                                   	<input type="text" name="rut" autocomplete="off" required value="<?php echo $dato['rut']; ?>"><br>
                                     <strong>Fecha Nacimiento</strong><br>
                                     <input type="date" name="fechan" autocomplete="off" required value="<?php echo $dato['fechan']; ?>"><br>

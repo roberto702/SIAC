@@ -50,14 +50,14 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
 
 INSERT INTO `alumnos` (`id`, `nombre`, `apellido`, `rut`, `telefono`, `fechan`, `folio`, `curso`, `estado`, `maestro`, `pension`, `domicilio`, `estado_civil`, `grado`) VALUES
 (17, 'DIEGO', 'MARTINEZ', '123333', '667873', '1978-05-07', '45678', '7', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
-(18, ' JORGE', 'VASQUEZ J.', '1128059636', '6679159', '2013-09-19', '10203', '11', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
-(19, 'MINDA', 'HERNANDEZ SALVADOR', '1244973778', '6678176', '2013-09-19', '82837', '11', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
+(18, ' JORGE', 'VASQUEZ J.', '1128059636', '6679159', '2013-09-19', '10203', '10', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
+(19, 'MINDA', 'HERNANDEZ SALVADOR', '1244973778', '6678176', '2013-09-19', '82837', '10', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
 (20, 'FABIOLA', 'HERNANDEZ', '233948', '6637749 - 17728839', '2013-09-19', '388477', '1', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
 (21, 'OSCAR', 'GUITIERREZ', '28839948', '7738998', '2013-09-19', '388499', '1', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
 (22, 'FABIAN', 'GARCIAS', '3949948', '2223333', '2013-09-19', '1212', '1', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
-(23, 'TERESA', 'JULIO JULIO', '6578399', '66782776', '2013-09-19', '987', '11', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
+(23, 'TERESA', 'JULIO JULIO', '6578399', '66782776', '2013-09-19', '987', '10', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
 (24, 'CESAR ANDRES', 'GARCIAS LOPEZ', '2345564', '6673847', '2013-09-19', '4567', '1', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
-(25, 'ANDRES', 'LOPEZ', '9887887', '6671836 - 413 8763 7789', '2013-09-19', '1234', '11', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
+(25, 'ANDRES', 'LOPEZ', '9887887', '6671836 - 413 8763 7789', '2013-09-19', '1234', '10', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
 (26, 'CRISTIAN JOSE', 'TAPIA CONTRERAS', '124556555', '6679148', '1988-05-06', '38899', '5', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', '', ''),
 (28, 'CINDY', 'DE LOS REYES CHICA', '1232134433', '6679159', '2014-03-11', '123', '2', 's', 'JORGE VASQUEZ', '350000', 'CARACOLES', 'O POSITIVO', 'PRIMERO'),
 (29, 'CINDY', 'DE LOS REYES CHICA', '1232134433', '6679159', '2014-03-11', '123', '2', 's', 'JORGE VASQUEZ', '300000', 'CARACOLES', 'O POSITIVO', ''),
@@ -113,7 +113,9 @@ INSERT INTO `salones` (`id`, `nombre`, `curso`, `estado`) VALUES
 (5, 'Timoteo', 'Adulto', 's'),
 (6, 'Gedeon', 'Adulto', 's'),
 (7, 'Daniel', 'Adulto', 's'),
-(11, 'Josue', 'Adulto', 's');
+(8, 'Josue', 'Adulto', 's'),
+(9, 'Caleb', 'Adulto', 's'),
+(10, 'Abraham', 'Adulto', 's');
 
 -- --------------------------------------------------------
 
