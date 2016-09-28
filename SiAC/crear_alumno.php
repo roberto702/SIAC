@@ -10,8 +10,8 @@
 		
 		$id='';					$existe=FALSE;			$titulo='Registrar Alumnos';
 		$nombre='';				$apellido='';			$rut='';			$telefono='';
-		$fechan=date('Y-m-d');	$folio='';				$curso='';			$sangre='';
-		$director='';			$pension='';			$grado='';			$barrio='';
+		$fechan=date('Y-m-d');	$email='';				$curso='';			$estado_civil='';
+		$director='';			$vive_con='';			$grado='';			$barrio='';
 		$dibu='<img src="alumnos/defecto.jpg" width="100" height="100">';
 		
 		if(!empty($_GET['doc'])){
@@ -20,8 +20,8 @@
 			if($row=mysql_fetch_array($sql)){
 				$id=$row['id'];						$existe=TRUE;
 				$nombre=$row['nombre'];				$apellido=$row['apellido'];			$rut=$row['rut'];					$telefono=$row['telefono'];
-				$fechan=$row['fechan'];				$folio=$row['folio'];				$curso=$row['curso'];				$sangre=$row['estado'];
-				$director=$row['maestro'];			$pension=$row['pension'];			$grado=$row['grado'];				$barrio=$row['domicilio'];
+				$fechan=$row['fechan'];				$email=$row['email'];				$curso=$row['curso'];				$estado_civil=$row['estado_civil'];
+				$director=$row['maestro'];			$vive_con=$row['vive_con'];			$grado=$row['grado'];				$barrio=$row['domicilio'];
 				$titulo='Actualizar Alumno "'.$nombre.' '.$apellido.'"';
 				
 				if (file_exists("alumnos/".$rut.".jpg")){
@@ -91,13 +91,13 @@
             if(!empty($_POST['nombre'])){
                 $nombre=limpiar($_POST['nombre']);			$apellido=limpiar($_POST['apellido']);
                 $rut=limpiar($_POST['rut']);				$telefono=limpiar($_POST['telefono']);
-                $fechan=limpiar($_POST['fechan']);			$folio=limpiar($_POST['folio']);
-                $curso=limpiar($_POST['curso']);			$sangre=limpiar($_POST['estado']);
-                $director=limpiar($_POST['maestro']);		$pension=limpiar($_POST['pension']);
+                $fechan=limpiar($_POST['fechan']);			$email=limpiar($_POST['email']);
+                $curso=limpiar($_POST['curso']);			$estado_civil=limpiar($_POST['estado_civil']);
+                $director=limpiar($_POST['maestro']);		$vive_con=limpiar($_POST['vive_con']);
                 $grado=limpiar($_POST['grado']);			$barrio=limpiar($_POST['domicilio']);
                 
                 if($existe==FALSE){
-                    $oProceso=new Proceso_Alumnos('',$nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,$director,$pension,$barrio,$sangre,$grado);						
+                    $oProceso=new Proceso_Alumnos('',$nombre,$apellido,$rut,$telefono,$fechan,$email,$curso,$director,$vive_con,$barrio,$estado_civil,$grado);						
                     $oProceso->crear();
                 
                     //subir la imagen del articulo
@@ -117,7 +117,7 @@
                     echo mensajes('El Alumno/a "'.$nombre.' '.$apellido.'" Ha Sido Registrado Con Exito','verde');
                 }elseif($existe==TRUE){
                     $idd=limpiar($_POST['id']);
-                    $oProceso=new Proceso_Alumnos($idd,$nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,$director,$pension,$barrio,$sangre,$grado);
+                    $oProceso=new Proceso_Alumnos($idd,$nombre,$apellido,$rut,$telefono,$fechan,$email,$curso,$director,$vive_con,$barrio,$estado_civil,$grado);
                     $oProceso->actualizar();
                     
                     //subir la imagen del articulo
@@ -171,8 +171,8 @@
                                     }
                                 ?>
                             </select><br>
-                            <strong>Pension</strong><br>
-                            <input type="text" name="pension" value="<?php echo $pension; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <strong>Vive con</strong><br>
+                            <input type="text" name="vive_con" value="<?php echo $vive_con; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Nombre Maestro</strong><br>
                             <input type="text" name="maestro" value="<?php echo $director; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Fotografia o Imagen</strong><br>
@@ -183,12 +183,12 @@
                             <input type="text" name="apellido" value="<?php echo $apellido; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Telefono / Celulares</strong><br>
                             <input type="text" name="telefono" value="<?php echo $telefono; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>No. De Carpeta o Folio</strong><br>
-                            <input type="text" name="folio" value="<?php echo $folio; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <strong>Correo Electronico</strong><br>
+                            <input type="text" name="email" value="<?php echo $email; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Grado</strong><br>
                             <input type="text" name="grado" value="<?php echo $grado; ?>" required class="input-xxlarge" autocomplete="off"><br>
-                            <strong>Vive con</strong><br>
-                            <input type="text" name="estado" value="<?php echo $sangre; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <strong>Estado Civil</strong><br>
+                            <input type="text" name="estado_civil" value="<?php echo $estado_civil; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Domicilio</strong><br>
                             <input type="text" name="domicilio" value="<?php echo $barrio; ?>" required class="input-xxlarge" autocomplete="off"><br><br>
                             <button type="submit" class="btn btn-success"><strong>Registrar</strong></button>

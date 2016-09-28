@@ -136,13 +136,14 @@
 				if(!empty($_POST['nombre']) and !empty($_POST['apellido'])){
 					$nombre=limpiar($_POST['nombre']);			$apellido=limpiar($_POST['apellido']);
 					$rut=limpiar($_POST['rut']);				$telefono=limpiar($_POST['telefono']);
-					$fechan=limpiar($_POST['fechan']);			$folio=limpiar($_POST['folio']);
+					$fechan=limpiar($_POST['fechan']);			$email=limpiar($_POST['email']);
 					$curso=limpiar($_POST['curso']);
 					
 					if(empty($_POST['id'])){
-						$c_alumno = new Proceso_Alumnos($nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,'s','');
+						$c_alumno = new Proceso_Alumnos($nombre,$apellido,$rut,$telefono,$fechan,$email,$curso,'s','');
 						$c_alumno->crear();
 						
+										
 						$can=mysql_query("SELECT MAX(id)as maximo FROM alumnos");
 						if($dato=mysql_fetch_array($can)){
 							$codigo=$dato['maximo'];
@@ -164,7 +165,7 @@
 								
 					}elseif(!empty($_POST['id'])){
 						$codigo=$_POST['id'];
-						$a_alumno = new Proceso_Alumnos($nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,'s',$codigo);
+						$a_alumno = new Proceso_Alumnos($nombre,$apellido,$rut,$telefono,$fechan,$email,$curso,'s',$codigo);
 						$a_alumno->actualizar();
 												
 						//subir la imagen del articulo
@@ -249,7 +250,7 @@
                                   	<input type="text" name="rut" autocomplete="off" required value="<?php echo $dato['rut']; ?>"><br>
                                     <strong>Fecha Nacimiento</strong><br>
                                     <input type="date" name="fechan" autocomplete="off" required value="<?php echo $dato['fechan']; ?>"><br>
-                                    <strong>Curso</strong><br>
+                                    <strong>Clase</strong><br>
                                     <select name="curso">
                                     	<?php
 											$c=mysql_query("SELECT * FROM salones WHERE estado='s'");
@@ -272,7 +273,7 @@
                                     <strong>Telefonos / Celulares</strong><br>
                                     <input type="text" name="telefono" autocomplete="off" value="<?php echo $dato['telefono']; ?>"><br>
                                     <strong>Correo Electronico</strong><br>
-                                    <input type="text" name="folio" autocomplete="off" value="<?php echo $dato['folio']; ?>"><br><br>
+                                    <input type="text" name="email" autocomplete="off" value="<?php echo $dato['email']; ?>"><br><br>
                                 </div>
                             </div>
                         </div>
@@ -345,7 +346,7 @@
                 <strong>Telefonos / Celulares</strong><br>
                 <input type="text" name="telefono" autocomplete="off"><br>
                 <strong>Correo Electronico</strong><br>
-                <input type="text" name="folio" autocomplete="off"><br><br>                
+                <input type="text" name="email" autocomplete="off"><br><br>                
             </div>
 		</div>
 	</div>

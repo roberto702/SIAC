@@ -1,6 +1,4 @@
 <?php
-include_once('Connections/Local.php');
-
 class Consultar_Salones{
 	private $consulta;
 	private $fetch;
@@ -50,41 +48,41 @@ class Proceso_Salones{
 }
 
 class Proceso_Alumnos{
-	var $id;			var $folio;			var $nombre;		var $curso;
-	var $apellido;		var $director;		var $rut;			var $pension;
-	var $telefono;		var $barrio;		var $fechan;		var $sangre;		var $grado;
+	var $id;			var $email;			var $nombre;		var $curso;
+	var $apellido;		var $director;		var $rut;			var $vive_con;
+	var $telefono;		var $barrio;		var $fechan;		var $estado_civil;		var $grado;
 		
-	function __construct($id,$nombre,$apellido,$rut,$telefono,$fechan,$folio,$curso,$director,$pension,$barrio,$sangre,$grado){
-		$this->id=$id;						$this->folio=$folio;
+	function __construct($id,$nombre,$apellido,$rut,$telefono,$fechan,$email,$curso,$director,$vive_con,$barrio,$estado_civil,$grado){
+		$this->id=$id;						$this->email=$email;
 		$this->nombre=$nombre;				$this->curso=$curso;
 		$this->apellido=$apellido;			$this->maestro=$director;
-		$this->rut=$rut;					$this->pension=$pension;
+		$this->rut=$rut;					$this->vive_con=$vive_con;
 		$this->telefono=$telefono;			$this->domicilio=$barrio;
-		$this->fechan=$fechan;				$this->estado=$sangre;
+		$this->fechan=$fechan;				$this->estado_civil=$estado_civil;
 		$this->grado=$grado;	
 							
 	}
 		
 	function crear(){
-		$id=$this->id;						$folio=$this->folio;
+		$id=$this->id;						$email=$this->email;
 		$nombre=$this->nombre;				$curso=$this->curso;		
 		$apellido=$this->apellido;			$director=$this->maestro;
-		$rut=$this->rut;					$pension=$this->pension;
+		$rut=$this->rut;					$vive_con=$this->vive_con;
 		$telefono=$this->telefono;			$barrio=$this->domicilio;
-		$fechan=$this->fechan;				$sangre=$this->estado;
+		$fechan=$this->fechan;				$estado_civil=$this->estado_civil;
 		$grado=$this->grado;
 			
-		mysql_query("INSERT INTO alumnos (nombre, apellido, rut, telefono, fechan, folio, curso, estado, maestro, pension, domicilio, estado) 
-				VALUES ('$nombre','$apellido','$rut','$telefono','$fechan','$folio','$curso','s','$director','$pension','$barrio','$sangre')");
+		mysql_query("INSERT INTO alumnos (nombre, apellido, rut, telefono, fechan, email, curso, estado, maestro, vive_con, domicilio, estado_civil) 
+				VALUES ('$nombre','$apellido','$rut','$telefono','$fechan','$email','$curso','s','$director','$vive_con','$barrio','$estado_civil')");
 	}
 	
 	function actualizar(){
-		$id=$this->id;						$folio=$this->folio;
+		$id=$this->id;						$email=$this->email;
 		$nombre=$this->nombre;				$curso=$this->curso;		
 		$apellido=$this->apellido;			$director=$this->maestro;
-		$rut=$this->rut;					$pension=$this->pension;
+		$rut=$this->rut;					$vive_con=$this->vive_con;
 		$telefono=$this->telefono;			$barrio=$this->domicilio;
-		$fechan=$this->fechan;				$sangre=$this->estado;
+		$fechan=$this->fechan;				$estado_civil=$this->estado_civil;
 		$grado=$this->grado;
 		
 		mysql_query("Update alumnos Set	nombre='$nombre',
@@ -92,12 +90,12 @@ class Proceso_Alumnos{
 										rut='$rut',
 										telefono='$telefono',
 										fechan='$fechan',
-										folio='$folio',
+										email='$email',
 										curso='$curso',
 										maestro='$director',
-										pension='$pension',
+										vive_con='$vive_con',
 										domicilio='$barrio',
-										estado='$sangre',
+										estado_civil='$estado_civil',
 										grado='$grado'
 									Where id=$id");
 	}	
