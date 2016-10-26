@@ -91,24 +91,7 @@ body {
                 <!--<li role="presentation" class="divider"></li>-->  
               </ul>
             </li>
-            <!--
-            <li class="dropdown">
-              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Caja<b class="caret"></b></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="contable.php" target="admin">Entrada y Salida de Dinero</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="cierre_caja.php" target="admin">Cierre de Caja</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="detalle.php?fecha=" target="admin">Detalle de Efectivo</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="crear_usu.php" target="admin">Registrar Cajeros</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="compras.php" target="admin">Compras</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="listado_compras.php" target="admin">Listado Compras</a></li>
-                <!-- <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="conceptos.php" target="admin">Administrar Conceptos</a></li>
-              </ul>
-            </li>
-            -->
+ 
             <li class="dropdown">
               <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Reportes <b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
@@ -145,7 +128,7 @@ body {
   </tr>
   <tr>
     <td>
-    <pre><center><strong><a href="" target="_blank" style="color:#000">Desarrollado por ESTFEL. Villa Alemana - V Región</a></strong></center></pre>
+    <pre><center><strong><a target="_blank" style="color:#000">Desarrollado por ESTFEL. Villa Alemana - V Región</a></strong></center></pre>
     </td>
   </tr>
 </table>

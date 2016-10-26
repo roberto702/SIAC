@@ -188,7 +188,19 @@
                             <strong>Grado</strong><br>
                             <input type="text" name="grado" value="<?php echo $grado; ?>" required class="input-xxlarge" autocomplete="off"><br>
                             <strong>Estado Civil</strong><br>
-                            <input type="text" name="estado_civil" value="<?php echo $estado_civil; ?>" required class="input-xxlarge" autocomplete="off"><br>
+                            <select name="estado_civil" class="input-xxlarge">
+							 <?php
+							 	$c=mysql_query("SELECT * FROM estadocivil WHERE con_estado='s'");
+									while($d=mysql_fetch_array($c)){
+										if($d['id_estado']==$estado_civil){
+												echo '<option value="'.$d['id_estado'].'" selected>'.$d['nom_estado'].'</option>';
+										}else{
+												echo '<option value="'.$d['id_estado'].'">'.$d['nom_estado'].'</option>';
+										}		
+							
+									}
+							   ?>
+							</select><br>
                             <strong>Domicilio</strong><br>
                             <input type="text" name="domicilio" value="<?php echo $barrio; ?>" required class="input-xxlarge" autocomplete="off"><br><br>
                             <button type="submit" class="btn btn-success"><strong>Registrar</strong></button>

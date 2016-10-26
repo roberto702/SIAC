@@ -1,6 +1,6 @@
 <?php
  		session_start();
-		include_once('php_conexion.php'); 
+		include_once('Connections/Local.php');
 		include_once('Class/funciones.php'); 
 		include_once('Class/class_alumnos.php');
 		if($_SESSION['tipo_usu']=='a' or $_SESSION['tipo_usu']=='u'){
@@ -71,7 +71,7 @@
                 </div>
     	        <div class="span6" align="center">
                 	<form name="form1" method="post" action="EXCEL_alumnos.php">
-                    	<strong>Seleccione el Salones o Cursos</strong><br>
+                    	<strong>Seleccione la clase</strong><br>
                         <select name="curso">
                         	<?php
 								$c=mysql_query("SELECT * FROM salones WHERE estado='s'");

@@ -99,7 +99,7 @@
 		}else{
 			echo '<div class="alert alert-error">
 					  <button type="button" class="close" data-dismiss="alert">×</button>
-					  <strong>Las dos Contraseña!</strong> Digitadas no soy iguales
+					  <strong>Las dos Contraseña!</strong> Digitadas no son iguales
 					</div>';
 		}
 	}

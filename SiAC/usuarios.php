@@ -77,7 +77,7 @@
 				if(!empty($_POST['ced'])){
 					$ced=limpiar($_POST['ced']);		$nom=limpiar($_POST['nom']);
 					$usu=limpiar($_POST['usu']);		$tipo=limpiar($_POST['tipo']);
-					$estado=limpiar($_POST['estado']);	$con=limpiar($_POST['con']);
+					$estado=limpiar($_POST['estado']);	$con=limpiar($_POST['usu']);/*Ojo aqui se debe ser 'con', pero si uso no graba la contraseña*/
 					
 					if($_POST['proceso']=='actualizar'){
 						mysql_query("UPDATE usuarios SET estado='$estado', nom='$nom', tipo='$tipo'	where usu='$usu'");
@@ -162,6 +162,7 @@
             </table>
         </td>
       </tr>
+	   
     </table>
     
     <div id="nuevo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -178,7 +179,7 @@
             <input type="text" name="nom" autocomplete="off" required class="input-large" value=""><br>
             <strong>Usuario</strong><br>
             <input type="text" name="usu" autocomplete="off" required class="input-large" value=""><br>
-            <strong>Estado</strong><br>
+			<strong>Estado</strong><br>
             <select name="estado" class="input-large">
             	<option value="s">Activo</option>
                 <option value="n">No Activo</option>
