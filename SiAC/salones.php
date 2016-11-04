@@ -96,7 +96,7 @@
        	    <div class="row-fluid">
 	            <div class="span6">
                 	<h3><img src="img/curso.jpg" class="img-circle img-polaroid" width="70" height="65"> 
-                        	Registro & Control de Salones / Cursos</h3>
+                        	Registro & Control de Clases EEDD</h3>
                 </div>
     	        <div class="span6">
                 	<div align="right">
@@ -105,7 +105,7 @@
                             	<strong><i class="icon-user"></i> Ingresar Nuevo</strong>
                         </a> 
                     	<button class="btn" data-toggle="dropdown">
-                        	<i class="icon-search"></i> <strong>Ordenar por Cursos</strong> <span class="caret"></span>
+                        	<i class="icon-search"></i> <strong>Ordenar por Bloque</strong> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                         <?php
@@ -120,7 +120,7 @@
                 	<form name="form1" method="post" action="">
                     	<div class="input-prepend">
                         	<span class="add-on"><i class="icon-search"></i></span>
-                            <input name="bus" type="text" placeholder="Buscar Salones" class="input-xlarge" autocomplete="off" autofocus>
+                            <input name="bus" type="text" placeholder="Buscar Clase" class="input-xlarge" autocomplete="off" autofocus>
                         </div>
                     </form>
                 </div>
@@ -145,7 +145,7 @@
 				echo '	<div class="alert alert-info" align="center">
 							<button type="button" class="close" data-dismiss="alert">×</button>
 							<strong>
-								El Curso / Salon "'.$nombre.'" Registrado con Exito en la Base de Datos							
+								La Clase "'.$nombre.'" se ha registrado con Exito en la Base de Datos							
 							</strong>
 						</div>';
 			}else{
@@ -155,7 +155,7 @@
 				echo '	<div class="alert alert-info" align="center">
 							<button type="button" class="close" data-dismiss="alert">×</button>
 							<strong>
-								El Curso / Salon "'.$nombre.'" Actualizado con Exito en la Base de Datos							
+								La Clase "'.$nombre.'" se ha actualizado con Exito en la Base de Datos							
 							</strong>
 						</div>';
 			}
@@ -163,8 +163,8 @@
 	?>
     <table class="table table-bordered table table-hover">
       <tr class="success">
-        <td><strong>Nombre del Salon</strong></td>
-        <td><strong>Descripcion del Salon</strong></td>
+        <td><strong>Nombre de la Clase</strong></td>
+        <td><strong>Descripcion del Bloque</strong></td>
         <td><center><strong>Estado</strong></center></td>
         <td>&nbsp;</td>
       </tr>
@@ -196,7 +196,7 @@
         </td>
         <td>
         	<center>
-        	<a href="#actualizar<?php echo $dato['id']; ?>" role="button" class="btn btn-mini" data-toggle="modal" title="Actualizar Informacion">
+        	<a href="#actualizar<?php echo $dato['id']; ?>" role="button" class="btn btn-mini" data-toggle="modal" title="Actualizar Información">
             	<i class="icon-edit"></i>
             </a>
             </center>
@@ -207,18 +207,18 @@
         	<input type="hidden" name="id" value="<?php echo $dato['id']; ?>">
         <div class="modal-header">
         	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-       	 	<h3 id="myModalLabel">Crear Nuevo Curso</h3>
+       	 	<h3 id="myModalLabel">Actualizar Clase</h3>
         </div>
         <div class="modal-body">
-        	<strong>Nombre del Salon</strong><br>
+        	<strong>Nombre de la Clase</strong><br>
             <input type="text" name="nombre" autocomplete="off" required value="<?php echo $dato['nombre']; ?>"><br>
-            <strong>Nombre del Curso</strong><br>
+            <strong>Bloque</strong><br>
             <input type="text" name="curso" list="characters" autocomplete="off" required value="<?php echo $dato['curso']; ?>">
           	<datalist id="characters">
             <?php 
-			  	$c=mysql_query("SELECT nombre FROM salones ORDER BY nombre");
+			  	$c=mysql_query("SELECT tipo_bloque FROM bloque ORDER BY tipo_bloque");
 				while($d=mysql_fetch_array($c)){
-					echo '<option value="'.$d['nombre'].'">';
+					echo '<option value="'.$d['tipo_bloque'].'">';
 				}
 			?>
          	</datalist>
@@ -226,7 +226,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true"><strong><i class="icon-remove"></i> Cerrar</strong></button>
-            <button type="submit" class="btn btn-primary"><strong><i class="icon-ok"></i> Actualizar Salon</strong></button>
+            <button type="submit" class="btn btn-primary"><strong><i class="icon-ok"></i> Actualizar Clase</strong></button>
         </div>
         </form>
     </div>
@@ -261,18 +261,18 @@
     	<form name="form2" method="post" action="">
         <div class="modal-header">
         	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-       	 	<h3 id="myModalLabel">Crear Nuevo Curso</h3>
+       	 	<h3 id="myModalLabel">Crear Nueva Clase</h3>
         </div>
         <div class="modal-body">
-        	<strong>Nombre del Salon</strong><br>
+        	<strong>Nombre de la Clase</strong><br>
             <input type="text" name="nombre" autocomplete="off" required><br>
-            <strong>Nombre del Curso</strong><br>
+            <strong>Bloque</strong><br>
             <input type="text" name="curso" list="characters" autocomplete="off" required>
           	<datalist id="characters">
             <?php 
-			  	$can=mysql_query("SELECT nombre FROM salones ORDER BY nombre");
-				while($dato=mysql_fetch_array($can)){
-					echo '<option value="'.$dato['nombre'].'">';
+			  	$bloque=mysql_query("SELECT tipo_bloque FROM bloque ORDER BY tipo_bloque");
+				while($dato=mysql_fetch_array($bloque)){
+					echo '<option value="'.$dato['tipo_bloque'].'">';
 				}
 			?>
          	</datalist>
@@ -280,7 +280,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true"><strong><i class="icon-remove"></i> Cerrar</strong></button>
-            <button type="submit" class="btn btn-primary"><strong><i class="icon-ok"></i> Guardar Salon</strong></button>
+            <button type="submit" class="btn btn-primary"><strong><i class="icon-ok"></i> Guardar Clase</strong></button>
         </div>
         </form>
     </div>
