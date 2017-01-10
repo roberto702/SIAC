@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 date_default_timezone_set('America/Mexico_City'); 
-class usuarios extends CI_Controller
+class Usuarios extends CI_Controller
 {
 
      public function __construct()
      {
           parent::__construct();
-          //Cargamos el modelo deel controlador
+          //Cargamos el modelo del controlador
           $this->load->model('model_usuarios');
           $this->load->model('model_seguridad');
           $this->load->model('model_login');
@@ -41,17 +41,17 @@ class usuarios extends CI_Controller
                	    redirect("usuarios?save=true");
                }
 			   if($VerifyExist>0){
-                    $this->session->set_flashdata('msg', '<div class="alert alert-error text-center">Email Duplicado</div>');
+                    $this->session->set_flashdata('msg', '<div class="alert alert-error text-center">Nombre Usuario Duplicado</div>');
                     $this->load->view('header');
 					$this->load->view('view_nuevo_usuario');
 					$this->load->view('footer');
                }
-			
+
 		}else{
 			  $this->load->view('header');
 			  $this->load->view('view_nuevo_usuario');
 			  $this->load->view('footer');
-		} 
+		}
      }
 	 function ValidaCampos(){
 		/*Campos para validar que no esten vacio los campos*/
@@ -275,5 +275,5 @@ class usuarios extends CI_Controller
 		
 	 }
 }
-/* Archivo clientes.php */
-/* Location: ./application/controllers/clientes.php */
+/* Archivo Usuarios.php */
+/* Location: ./application/controllers/Usuarios.php */
