@@ -6,7 +6,7 @@ class Usuarios extends CI_Controller
      public function __construct()
      {
           parent::__construct();
-          //Cargamos el modelo del controlador
+          //Cargamos el modelo deel controlador
           $this->load->model('model_usuarios');
           $this->load->model('model_seguridad');
           $this->load->model('model_login');
@@ -275,5 +275,5 @@ class Usuarios extends CI_Controller
 		
 	 }
 }
-/* Archivo Usuarios.php */
-/* Location: ./application/controllers/Usuarios.php */
+/* Archivo clientes.php */
+/* Location: ./application/controllers/clientes.php */
