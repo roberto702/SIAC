@@ -1,7 +1,7 @@
 package cl.estfel.siac;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+//import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by robma on 15/04/2017.
- */
 
 public class UsuariosAdapter extends ArrayAdapter {
 
@@ -69,9 +66,9 @@ public class UsuariosAdapter extends ArrayAdapter {
             }
 
         Usuarios usuarios = (Usuarios) this.getItem(position);
-        usuariosHolder.txnombre.setTag(usuarios.getNombre_json());
-        usuariosHolder.txapellidos.setTag(usuarios.getApellidos_json());
-        usuariosHolder.txusuarios.setTag(usuarios.getUsuario_json());
+        usuariosHolder.txnombre.setText(usuarios.getNombre_json());
+        usuariosHolder.txapellidos.setText(usuarios.getApellidos_json());
+        usuariosHolder.txusuarios.setText(usuarios.getUsuario_json());
 
         return row;
     }

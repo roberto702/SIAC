@@ -1,8 +1,6 @@
 package cl.estfel.siac;
 
-/**
- * Created by robma on 15/04/2017.
- */
+
 
 public class Usuarios {
 

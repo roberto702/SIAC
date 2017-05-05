@@ -29,15 +29,5 @@
         android:layout_centerHorizontal="true"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Get Json"
-        android:layout_gravity="center_horizontal"
-        android:onClick="getJSON"
-        android:id="@+id/b1"
-        />
-
-
-    </RelativeLayout>
+</RelativeLayout>
 

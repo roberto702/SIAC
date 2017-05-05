@@ -1,28 +1,24 @@
 package cl.estfel.siac;
 
-import android.os.AsyncTask;
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class DisplayListView extends AppCompatActivity {
 
 
-
+    Activity me = this;
     String json_string;
     JSONObject jsonObject;
     JSONArray jsonArray;
@@ -40,11 +36,12 @@ public class DisplayListView extends AppCompatActivity {
         usuariosAdapter = new UsuariosAdapter(this,R.layout.row_layout);
         listView.setAdapter(usuariosAdapter);
 
-        json_string = getIntent().getExtras().getString("json_data");
+
+        json_string = Data.JSONUsuarios;
 
         try {
             jsonObject = new JSONObject(json_string);
-            jsonArray = jsonObject.getJSONArray("Usuarios");
+            jsonArray = jsonObject.getJSONArray("USER");
 
             int count = 0;
             String nombre, apellidos, usuarios_listview;
@@ -52,9 +49,9 @@ public class DisplayListView extends AppCompatActivity {
             while (count<jsonObject.length()){
 
             JSONObject JO = jsonArray.getJSONObject(count);
-                nombre = JO.getString("nombre");
-                apellidos = JO.getString("apellidos");
-                usuarios_listview =JO.getString("nom_usuario");
+                nombre = JO.getString("NOMBRE");
+                apellidos = JO.getString("APELLIDOS");
+                usuarios_listview =JO.getString("USER");
                 Usuarios usuarios = new Usuarios(nombre, apellidos,usuarios_listview);
                 usuariosAdapter.add(usuarios);
                 count++;
@@ -65,6 +62,19 @@ public class DisplayListView extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
 
+        } catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(me,"String:" + json_string,Toast.LENGTH_LONG).show();
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        return MenuSuperior.instancia.onCreateOptionsMenu(menu, this);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return MenuSuperior.instancia.onOptionsItemSelected(item, this);
     }
 }
